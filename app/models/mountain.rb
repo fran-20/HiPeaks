@@ -9,9 +9,9 @@ class Mountain < ApplicationRecord
     end
   end
 
-  def review_score_percentage
+  def avg_level
     unless self.reviews.empty?
-      reviews.average(:score).round(1).to_f*100/5
+      reviews.average(:level).round(1).to_f
     else
       0.0
     end

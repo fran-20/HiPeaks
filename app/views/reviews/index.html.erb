@@ -1,41 +1,64 @@
-<section class="section mt-6">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-5">
-        <div class="card mb-6">
-          <header class="card-header">
-            <p class="card-header-title">
-              <%= @mountain.name %>
-            </p>
-          </header>
-          
-          <div class="card-content">
-            <p class="result-rating-rate">
-              <span class="star5_rating" data-rate="<%= @mountain.avg_score %>"></span>
-              <span class="number_rating"><%= @mountain.avg_score %>点（<%= @mountain.reviews.count %>件のレビュー）</span>
-            </p>
-          </div>
-          
-        </div>
-        <table class="table is-fullwidth has-text-centered">
-          <thead>
-            <tr>
-              <th>ユーザー</th><th>点数</th><th>内容</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @reviews.each do |review| %>
-              <tr>
-                <td><%= review.user.name %></td>
-                <td><%= review.score %></td>
-                <td><%= review.content %></td>
-                <td><%= link_to "編集", edit_review_path(review) %></td>
-                <td><%= button_to "削除", review_path(review), method: :delete %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+<div class="container-fluid">
+  <div class="card">
+    <div class="row">
+      <div class="col-12">
+        <h5 class="result-rating-rate">
+          <span class="star5_rating" data-rate="<%= @mountain.avg_score %>"></span>
+          <span class="number_rating"><%= @mountain.avg_score %>点（<%= @mountain.reviews.count %>件のレビュー）</span>
+        </h5>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h5 class="result-rating-rate">
+          <span class="star5_rating" data-rate="<%= @mountain.avg_level %>"></span>
+          <span class="number_rating"><%= @mountain.avg_level %>点（<%= @mountain.reviews.count %>件のレビュー）</span>
+        </h5>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col-12">
+        <p class="card-title">標高：<%= @mountain.height %>m</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <p class="card-title">山域：<%= @mountain.area %></p>
+      </div>
+    </div>
+
+    <table class="table is-fullwidth has-text-centered">
+      <thead>
+        <tr>
+          <th>ユーザー</th>
+          <th>登山開始日</th>
+          <th>登山終了日</th>
+          <th>満足度</th>
+          <th>難易度</th>
+          <th>タイトル</th>
+          <th>コメント</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td><%= review.user.name %></td>
+            <td><%= review.start %></td>
+            <td><%= review.end %></td>
+            <td><%= review.score %></td>
+            <td><%= review.level %></td>
+            <td><%= review.title %></td>
+            <td><%= review.content %></td>
+            <td><%= link_to "編集", edit_review_path(review) %></td>
+            <td><%= button_to "削除", review_path(review), method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-</section>
+</div>

@@ -1,5 +1,6 @@
 <div class="container-fluid">
-  <%= form_with model: @review, url: review_path(@review), local: true do |f| %>
+  <%= form_with model: review, url: mountain_reviews_path(mountain), local: true do |f| %>
+    <%= f.hidden_field :mountain_id, value: mountain.id %>
 
     <div class="row">
       <div class="col">

@@ -7,7 +7,8 @@ class CreateReviews < ActiveRecord::Migration[7.0]
       t.text :content
       t.integer :score
       t.integer :level
-      t.time :time
+      t.datetime :start
+      t.datetime :end
       t.integer :image
 
       t.timestamps
