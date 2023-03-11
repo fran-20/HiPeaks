@@ -18,15 +18,26 @@
           登山のSNSサイト
         </div>
         <% if user_signed_in? %>
-          <%= link_to 'マイページ', user_path, class: "text-muted fs-2 navbar-brand" %>
-          <%= link_to '山一覧', mountains_path, class: "text-muted fs-2 navbar-brand" %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "text-muted fs-2 navbar-brand" %>
+          <%= link_to mountains_path do %>
+            <i class="fa-solid fa-mountain-sun fa-3x"></i>
+          <% end %>
+          <%= link_to user_path do %>
+            <i class="fa-solid fa-circle-user fa-3x"></i>
+          <% end %>
+          <%= link_to destroy_user_session_path, method: :get do %>
+            <i class="fa-solid fa-right-from-bracket fa-3x"></i>
+          <% end %>
         <% else %>
-          <%= link_to 'ログイン', new_user_session_path, class: "text-muted fs-2 navbar-brand" %>
-          <%= link_to '新規登録', new_user_registration_path, class: "text-muted fs-2 navbar-brand" %>
+          <%= link_to new_user_session_path do %>
+            <i class="fa-solid fa-right-to-bracket fa-3x"></i>
+          <% end %>
+          <%= link_to  new_user_registration_path do %>
+            <i class="fa-solid fa-user-plus fa-3x"></i>
+          <% end %>
         <% end %>
       </div>
     </nav>
+
 
     <% if flash[:notice] %>
       <div class="alert alert-primary" role="alert"><strong><%= notice %></strong></div>
