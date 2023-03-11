@@ -17,20 +17,4 @@ class Mountain < ApplicationRecord
     end
   end
   
-  def active_hours
-    unless self.reviews.empty?
-      (reviews(:end) - reviews(:start) / 3600).round(0).to_t
-    else
-      0.0
-    end
-  end
-  
-  def active_minutes
-    unless self.reviews.empty?
-      (((review.end - review.start) % 3600) / 60).round(0)
-    else
-      0.0
-    end
-  end
-  
 end

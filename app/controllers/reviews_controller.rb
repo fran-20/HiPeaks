@@ -13,6 +13,7 @@ class ReviewsController < ApplicationController
   def create #/mountains/:mountain_id/reviews(.:format)
     @mountain = Mountain.find(params[:mountain_id])
     @review = Review.new(review_params)
+    @review.image.attach(params[:review][:image])
     @review.user_id = current_user.id
     if @review.save
       redirect_to review_path(@review), notice: '投稿に成功しました。'
