@@ -1,5 +1,5 @@
 <div class="card-body">
-  <h5 class="card-title"><%= (@review.end - @review.start) / 60 / 60 %></h5>
+  <h5 class="card-title"><%= (@review.end - @review.start) / 3600 %></h5>
   <h5 class="card-title"><%= @review.title %></h5>
   <div class="card-text"><%= @review.content %></div>
   <div class="card-text">登った日：<%= @review.start %></div>
