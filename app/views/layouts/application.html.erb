@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hi・Peaks</title>
+    <title>HiPeaks</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,33 +10,18 @@
   </head>
 
   <body>
-    <nav class="fixed-top navbar-light bg-light">
+    <!-- Navigation-->
+    <nav class="navbar navbar-light bg-light static-top fixed-top">
       <div class="container-fluid">
-        <div class="row justify-content-between">
-          <p class="h1">
-            <div class="col-4">
-              <%= link_to 'HiPeaks', root_path, class: "navbar-brand" %>
-            </div>
-            <% if user_signed_in? %>
-              <div class="col-2">
-                <%= link_to 'マイページ', user_path, class: "nav-link" %>
-              </div>
-              <div class="col-2">
-                <%= link_to '山一覧', mountains_path, class: "nav-link" %>
-              </div>
-              <div class="col-2">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "nav-link" %>
-              </div>
-            <% else %>
-              <div class="col-2">
-                <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
-              </div>
-              <div class="col-2">
-                <%= link_to '新規登録', new_user_registration_path, class: "nav-link" %>
-              </div>
-            <% end %>
-          </p>
-        </div>
+      <%= link_to 'HiPeaks', root_path, class: "col-6 fs-1 h1 navbar-brand" %>
+        <% if user_signed_in? %>
+          <%= link_to 'マイページ', user_path, class: "text-muted fs-2 navbar-brand" %>
+          <%= link_to '山一覧', mountains_path, class: "text-muted fs-2 navbar-brand" %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "text-muted fs-2 navbar-brand" %>
+        <% else %>
+          <%= link_to 'ログイン', new_user_session_path, class: "text-muted fs-2 navbar-brand" %>
+          <%= link_to '新規登録', new_user_registration_path, class: "text-muted fs-2 navbar-brand" %>
+        <% end %>
       </div>
     </nav>
 
@@ -53,22 +38,22 @@
         <div class="row">
           <div class="col d-flex justify-content-center align-items-center">
             <%= link_to mountains_path do %>
-              <i class="fa-solid fa-mountain-sun fa-5x"></i>
+              <i class="fa-solid fa-mountain-sun fa-4x"></i>
             <% end %>
           </div>
           <div class="col d-flex justify-content-center align-items-center">
             <%= link_to "#" do %>
-              <i class="fa-solid fa-bookmark fa-5x"></i>
+              <i class="fa-solid fa-bookmark fa-4x"></i>
             <% end %>
           </div>
           <div class="col d-flex justify-content-center align-items-center">
             <%= link_to "#" do %>
-              <i class="fa-solid fa-comment fa-5x"></i>
+              <i class="fa-solid fa-comment fa-4x"></i>
             <% end %>
           </div>
           <div class="col d-flex justify-content-center align-items-center">
             <%= link_to user_path do %>
-              <i class="fa-solid fa-circle-user fa-5x"></i>
+              <i class="fa-solid fa-circle-user fa-4x"></i>
             <% end %>
           </div>
         </div>

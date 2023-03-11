@@ -15,13 +15,14 @@
  */
 @import "bootstrap";
 
-body { padding: 70px 0 100px 0; }
+body { padding: 0 0 100px 0; }
 
 .background {
-    background-image: image-url('top.jpg');
-    background-size: cover;
-    width: 100%;
-    height:600px; 
+    background-image: image-url('people.png');
+    background-position:center;
+    background-size:cover;
+    width:100%;
+    height:1200px;
 }
 
 .star5_rating{
