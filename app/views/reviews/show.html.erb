@@ -1,3 +1,7 @@
+<% if @review.image.attached? %>
+  <%= image_tag@review.image.variant(:display) %>
+<% end %>
+
 <div class="card-body">
   <h5 class="card-title"><%= @review.title %></h5>
   <div class="card-text"><%= @review.content %></div>

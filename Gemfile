@@ -72,3 +72,5 @@ end
 gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem "active_storage_validations"
+gem "image_processing"

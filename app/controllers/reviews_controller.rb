@@ -40,7 +40,6 @@ class ReviewsController < ApplicationController
     if @review.update(review_params)
       redirect_to review_path(@review), notice: '更新に成功しました。'
     else
-      @mountain = Mountain.find(params[:mountain_id])
       render :edit
     end
   end
