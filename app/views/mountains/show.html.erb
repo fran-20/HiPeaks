@@ -35,17 +35,40 @@
   <p class="h1">口コミ</p>
 
   <% @reviews.each do |review| %>
-    <div class="card-body">
-      <h5 class="card-title"><%= review.title %></h5>
-      <div class="card-text"><%= review.content %></div>
-      <div class="star5_rating" data-rate=<%= review.score %>></div>
-      <div class="number_rating"><%= review.score %>点</div>
-      <div class="card-text">所要時間：<%= ((review.end - review.start) / 3600).round(0) %> 時間 <%= (((review.end - review.start) % 3600) / 60).round(0) %>分</h5>
-      <div class="card-text">登った日：<%= review.start.strftime('%Y-%m-%d') %></div>
-      <div class="card-text"><small class="text-muted">更新日:<%= review.updated_at.strftime('%Y-%m-%d') %></small></div>
-      <div class="card-text"><%= link_to "詳細", review_path(review) %></div>
-      <div class="card-text"><%= link_to "編集", edit_review_path(review) %></div>
-      <div class="card-text"><%= button_to "削除", review_path(review), method: :delete %></div>
+    <div class="card">
+      <div class="row g-0">
+        <div class="col
+        ">
+          <figure class="figure">
+            <% if review.image.attached? %>
+              <%= image_tag review.image.variant(:display) %>
+            <% end %>
+          </figure>
+        </div>
+        <div class="col-8">
+          <div class="card-body">
+            <h5 class="card-title"><%= review.title %></h5>
+            <div class="card-text"><%= review.content %></div>
+            <div class="star5_rating" data-rate=<%= review.score %>></div>
+            <div class="number_rating"><%= review.score %>点</div>
+            <div class="card-text">所要時間：<%= ((review.end - review.start) / 3600).round(0) %> 時間 <%= (((review.end - review.start) % 3600) / 60).round(0) %>分</h5>
+            <div class="card-text">登った日：<%= review.start.strftime('%Y-%m-%d') %></div>
+            <div class="card-text"><small class="text-muted">更新日:<%= review.updated_at.strftime('%Y-%m-%d') %></small></div>
+            <div class="card-text"><%= link_to "詳細", review_path(review) %></div>
+            <div class="card-text"><%= link_to "編集", edit_review_path(review) %></div>
+            <div class="card-text"><%= button_to "削除", review_path(review), method: :delete %></div>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
+</div>
+
+
+
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
 </div>
