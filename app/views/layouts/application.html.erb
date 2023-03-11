@@ -10,40 +10,34 @@
   </head>
 
   <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= link_to 'Hi・Peaks', mountains_path, class: "navbar-brand" %>
-      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <% if user_signed_in? %>
-        <div class="collapse navbar-collapse" id="Navber">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <%= link_to 'マイページ', user_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
+    <nav class="fixed-top navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="row justify-content-between">
+          <p class="h1">
+            <div class="col-4">
+              <%= link_to 'HiPeaks', mountains_path, class: "navbar-brand" %>
+            </div>
+            <% if user_signed_in? %>
+              <div class="col-2">
+                <%= link_to 'マイページ', user_path, class: "nav-link" %>
+              </div>
+              <div class="col-2">
                 <%= link_to '山一覧', mountains_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "nav-link" %>
-            </li>
-          </ul>
+              </div>
+              <div class="col-2">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "nav-link" %>
+              </div>
+            <% else %>
+              <div class="col-2">
+                <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
+              </div>
+              <div class="col-2">
+                <%= link_to '新規登録', new_user_registration_path, class: "nav-link" %>
+              </div>
+            <% end %>
+          </p>
         </div>
-      <% else %>
-        <div class="collapse navbar-collapse" id="Navber">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '新規登録', new_user_registration_path, class: "nav-link" %>
-            </li>
-          </ul>
-        </div>
-      <% end %>
-    
+      </div>
     </nav>
 
     <% if flash[:notice] %>
@@ -53,5 +47,32 @@
       <div class="alert alert-danger" role="alert"><strong><%= alert %></strong></div>
     <% end %>
     <%= yield %>
+    
+    <nav class="fixed-bottom navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col d-flex justify-content-center align-items-center">
+            <%= link_to mountains_path do %>
+              <i class="fa-solid fa-mountain-sun fa-5x"></i>
+            <% end %>
+          </div>
+          <div class="col d-flex justify-content-center align-items-center">
+            <%= link_to "#" do %>
+              <i class="fa-solid fa-bookmark fa-5x"></i>
+            <% end %>
+          </div>
+          <div class="col d-flex justify-content-center align-items-center">
+            <%= link_to "#" do %>
+              <i class="fa-solid fa-comment fa-5x"></i>
+            <% end %>
+          </div>
+          <div class="col d-flex justify-content-center align-items-center">
+            <%= link_to user_path do %>
+              <i class="fa-solid fa-circle-user fa-5x"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </nav>
   </body>
 </html>
