@@ -15,14 +15,22 @@
  */
 @import "bootstrap";
 
-body { padding: 0 0 100px 0; }
+body { padding: 85px 0 100px 0; }
 
-.background {
-    background-image: image-url('people.png');
+.jumbotron {
+    background:url(people.png);
+    background-size:cover;
+    background-position: center 60%;
+    width:100%;
+    height:1000px;
+}
+
+.background-mountain {
+    background-image: image-url('alex.jpg');
     background-position:center;
     background-size:cover;
     width:100%;
-    height:1200px;
+    height:600px;
 }
 
 .star5_rating{

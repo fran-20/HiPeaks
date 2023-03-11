@@ -13,7 +13,10 @@
     <!-- Navigation-->
     <nav class="navbar navbar-light bg-light static-top fixed-top">
       <div class="container-fluid">
-      <%= link_to 'HiPeaks', root_path, class: "col-6 fs-1 h1 navbar-brand" %>
+        <div class="col-6">
+          <%= link_to 'HiPeaks', root_path, class: "fs-1 h1 navbar-brand" %>
+          登山のSNSサイト
+        </div>
         <% if user_signed_in? %>
           <%= link_to 'マイページ', user_path, class: "text-muted fs-2 navbar-brand" %>
           <%= link_to '山一覧', mountains_path, class: "text-muted fs-2 navbar-brand" %>
@@ -32,7 +35,7 @@
       <div class="alert alert-danger" role="alert"><strong><%= alert %></strong></div>
     <% end %>
     <%= yield %>
-    
+
     <nav class="fixed-bottom navbar-light bg-light">
       <div class="container-fluid">
         <div class="row">

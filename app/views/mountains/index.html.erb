@@ -1,6 +1,7 @@
+<div class="background-mountain"></div>
 <% @mountains.each do |mountain| %>
   <div class="container-fluid">
-    
+
     <div class="card">
       <div class="row g-0">
         <div class="col-3">
@@ -14,7 +15,7 @@
                 <h3 class="card-title"><%= mountain.name %>(<%= mountain.kana %>)</h3>
               </div>
             </div>
-    
+
             <div class="row">
               <div class="col-12">
                 <h5 class="result-rating-rate">
@@ -23,21 +24,21 @@
                 </h5>
               </div>
             </div>
-            
+
             <hr>
-    
+
             <div class="row">
               <div class="col-12">
                 <p class="card-title">標高：<%= mountain.height %>m</p>
               </div>
             </div>
-            
+
             <div class="row">
               <div class="col-12">
                 <p class="card-title">山域：<%= mountain.area %></p>
               </div>
             </div>
-    
+
             <div class="row">
               <div class="col-2">
                 <%= link_to mountain_path(mountain) do %>レビューを見る<% end %>
