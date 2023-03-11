@@ -40,10 +40,10 @@
     
             <div class="row">
               <div class="col-2">
-                <%= link_to mountain_reviews_path(mountain) do %>レビューを見る<% end %>
+                <%= link_to mountain_path(mountain) do %>レビューを見る<% end %>
               </div>
               <div class="col-2">
-              <%= link_to mountain_path(mountain) do %>レビューを書く<% end %>
+              <%= link_to new_mountain_review_path(mountain) do %>レビューを書く<% end %>
               </div>
             </div>
           </div>

@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_130341) do
     t.integer "mountain_id", null: false
     t.string "title"
     t.text "content"
-    t.integer "score"
+    t.float "score"
     t.integer "level"
     t.datetime "start"
     t.datetime "end"

@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
       t.references :mountain, null: false, foreign_key: true
       t.string :title
       t.text :content
-      t.integer :score
+      t.float :score
       t.integer :level
       t.datetime :start
       t.datetime :end

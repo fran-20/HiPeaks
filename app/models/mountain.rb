@@ -17,4 +17,12 @@ class Mountain < ApplicationRecord
     end
   end
   
+  def active_time
+    unless self.reviews.empty?
+      review.end-review.start
+    else
+      0.0
+    end
+  end
+  
 end
