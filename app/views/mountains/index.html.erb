@@ -12,7 +12,7 @@
 
             <div class="row">
               <div class="col-12">
-                <h3 class="card-title"><%= mountain.name %>(<%= mountain.kana %>)</h3>
+                <h3 class="card-title"><%= link_to mountain_path(mountain) do %><%= mountain.name %>(<%= mountain.kana %><% end %></h3>
               </div>
             </div>
 
@@ -36,15 +36,6 @@
             <div class="row">
               <div class="col-12">
                 <p class="card-title">山域：<%= mountain.area %></p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-2">
-                <%= link_to mountain_path(mountain) do %>レビューを見る<% end %>
-              </div>
-              <div class="col-2">
-              <%= link_to new_mountain_review_path(mountain) do %>レビューを書く<% end %>
               </div>
             </div>
           </div>

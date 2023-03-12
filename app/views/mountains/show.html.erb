@@ -1,87 +1,54 @@
 <div class="container-fluid">
   <div class="card">
-  <img src="assets/images/bs-images/img-2x1.png" class="card-img-top" alt="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-</div>
-    
     <div class="card-body">
       <h5 class="card-title"><%= @mountain.name %></h5>
+      <p class="card-text text-muted">読み：<%= @mountain.kana %> | 標高：<%= @mountain.height %> | 山域：<%= @mountain.area %></p>
+      <h5 class="card-title">
+        <p class="result-rating-rate">
+          <span class="star5_rating" data-rate="<%= @mountain.avg_score %>"></span>
+          <span class="number_rating"><%= @mountain.avg_score %>（<%= @mountain.reviews.count %>件の評価）</span>
+        </p>
+      </h5>
+      <p class="card-text">難易度：Lv.<%= @mountain.avg_level %></p>
+      <p class="card-text"><%= link_to new_mountain_review_path(@mountain) do %>レビューを書く<% end %></p>
     </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-2">
-      <p>読み：<%= @mountain.kana %></p>
-    </div>
-    <div class="col-2">
-      <p>標高：<%= @mountain.height %></p>
-    </div>
-    <div class="col-2">
-      <p>山域：<%= @mountain.area %></p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <h1 class="result-rating-rate">
-        <span class="star5_rating" data-rate="<%= @mountain.avg_score %>"></span>
-        <span class="number_rating"><%= @mountain.avg_score %>（<%= @mountain.reviews.count %>件の評価）</span>
-      </h1>
-    </div>
-    <div class="col">
-      <p class="h1">難易度：Lv.<%= @mountain.avg_level %></p>
-    </div>
-  </div>
-
-  <div class="col">
-    <p class="h1">
-      <%= link_to new_mountain_review_path(@mountain) do %>レビューを書く<% end %>
-    </p>
   </div>
 
   <hr>
-
   <p class="h1">口コミ</p>
-
-  <% @reviews.each do |review| %>
-    <div class="card">
-      <div class="row g-0">
-        <div class="col
-        ">
-          <figure class="figure">
+  
+  <% unless @reviews.empty? %>
+    <% @reviews.each do |review| %>
+      <div class="card">
+        <div class="row">
+          <div class="col-4">
             <% if review.image.attached? %>
               <%= image_tag review.image.variant(:display) %>
+            <% else %>
+              <p class="card-text">投稿写真はありません</p>
             <% end %>
-          </figure>
-        </div>
-        <div class="col-8">
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to review.title, review_path(review) %></h5>
-            <div class="card-text"><%= review.content %></div>
-            <div class="star5_rating" data-rate=<%= review.score %>></div>
-            <div class="number_rating"><%= review.score %>点</div>
-            <div class="card-text">所要時間：
-              <%= ((review.end - review.start) / 3600).round(0) %> 時間
-              <%= (((review.end - review.start) % 3600) / 60).round(0) %>分
+          </div>
+          <div class="col">
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to review.title, review_path(review) %></h5>
+              <p class="card-text"><%= review.content %></p>
+              <p class="card-text">
+                <span class="star5_rating" data-rate="<%= review.score %>"></span>
+                <span class="number_rating"><%= review.score %></span>
+              </p>
+              <p class="card-text">難易度：Lv.<%= review.level %></p>
+              <div class="card-text">所要時間：
+                  <%= ((review.end - review.start) / 3600).round(0) %> 時間
+                  <%= (((review.end - review.start) % 3600) / 60).round(0) %>分
+              </div>
+              <p class="card-text">登った日：<%= review.start.strftime('%Y-%m-%d') %></p>
+              <p class="card-text"><small class="text-muted">更新日:<%= review.updated_at.strftime('%Y-%m-%d') %></small></p>
             </div>
-            <div class="card-text">登った日：<%= review.start.strftime('%Y-%m-%d') %></div>
-            <div class="card-text"><small class="text-muted">更新日:<%= review.updated_at.strftime('%Y-%m-%d') %></small></div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
+  <% else %>
+    <p class="card-text">投稿はありません</p>
   <% end %>
-</div>
-
-
-
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
 </div>

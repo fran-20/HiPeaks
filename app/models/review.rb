@@ -2,7 +2,7 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :mountain
   has_one_attached :image do |attachable|
-    attachable.variant :display, resize_to_limit: [500, 500]
+    attachable.variant :display, resize_to_limit: [500, 400]
   end
   default_scope -> { order(created_at: :desc) }
   validates :score, presence: true

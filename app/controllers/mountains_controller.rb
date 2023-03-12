@@ -6,6 +6,6 @@ class MountainsController < ApplicationController
 
   def show
     @mountain = Mountain.find(params[:id])
-    @reviews = Review.all
+    @reviews = @mountain.reviews
   end
 end
