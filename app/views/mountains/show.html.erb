@@ -21,7 +21,7 @@
     <% @reviews.each do |review| %>
       <div class="card">
         <div class="row">
-          <div class="col-4">
+          <div class="col">
             <% if review.image.attached? %>
               <%= image_tag review.image.variant(:display) %>
             <% else %>
