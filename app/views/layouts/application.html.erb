@@ -13,18 +13,23 @@
     <!-- Navigation-->
     <nav class="navbar navbar-light bg-light static-top fixed-top">
       <div class="container-fluid">
-        <div class="col-6">
-          <%= link_to 'HiPeaks', root_path, class: "fs-1 h1 navbar-brand" %>
-          登山のSNSサイト
+        <div class="row">
+          <div class="fs-1 h1 mb-0 navbar-brand">
+            <%= link_to 'HiPeaks', root_path, class: "text-dark text-decoration-none" %>
+            <div class="text-muted fs-3 navbar-brand">山を探して記録しよう</div>
+          </div>
         </div>
-        <% if user_signed_in? %>
-          <%= link_to 'マイページ', user_path, class: "text-muted fs-2 navbar-brand" %>
-          <%= link_to '山一覧', mountains_path, class: "text-muted fs-2 navbar-brand" %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "text-muted fs-2 navbar-brand" %>
-        <% else %>
-          <%= link_to 'ログイン', new_user_session_path, class: "text-muted fs-2 navbar-brand" %>
-          <%= link_to '新規登録', new_user_registration_path, class: "text-muted fs-2 navbar-brand" %>
-        <% end %>
+        
+        <div class="fs-3 navbar-brand text-right">
+          <% if user_signed_in? %>
+            <%= link_to 'マイページ', user_path, class: "me-5 text-muted text-decoration-none " %>
+            <%= link_to '山一覧', mountains_path, class: "me-5 text-muted text-decoration-none" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "text-muted text-decoration-none" %>
+          <% else %>
+            <%= link_to 'ログイン', new_user_session_path, class: "me-5 text-muted text-decoration-none" %>
+            <%= link_to '新規登録', new_user_registration_path, class: "me-5 text-muted text-decoration-none" %>
+          <% end %>
+        </div>
       </div>
     </nav>
 

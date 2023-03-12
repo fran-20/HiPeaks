@@ -1,32 +1,41 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
 @import "bootstrap";
 
-body { padding: 85px 0 100px 0; }
+body { padding: 120px 0 100px 0; }
 
-.jumbotron {
-    background:url(people.png);
+.jumbotron-top {
+    background-image: image-url('top.jpg');
+    background-position:center;
     background-size:cover;
-    background-position: center 60%;
     width:100%;
-    height:1000px;
+    height:600px;
 }
 
-.background-mountain {
-    background-image: image-url('alex.jpg');
+.jumbotron-mountain {
+    background-image: image-url('mountain.jpg');
+    background-position:center;
+    background-size:cover;
+    width:100%;
+    height:600px;
+}
+
+.jumbotron-signin {
+    background-image: image-url('path.jpg');
+    background-position:center;
+    background-size:cover;
+    width:100%;
+    height:600px;
+}
+
+.jumbotron-mypage {
+    background-image: image-url('women.jpg');
+    background-position:center;
+    background-size:cover;
+    width:100%;
+    height:600px;
+}
+
+.jumbotron-signup {
+    background-image: image-url('man.jpg');
     background-position:center;
     background-size:cover;
     width:100%;
