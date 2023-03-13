@@ -1,18 +1,51 @@
-
 <div class="container-fluid">
   <div class="card">
-    <div class="row">
-      <div class="col-12">
-        <div class="card-header">
-          <h1 class="card-title"><%= @mountain.name %>に登った記録</h3>
-        </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= @mountain.name %>に登った記録</h5>
+      
+      <%= form_with model: @review, url: mountain_reviews_path(@mountain), local: true do |f| %>
+        <%= f.hidden_field :mountain_id, value: @mountain.id %>
+        
+        <div class="h3">開始日時</div>
         <div class="row">
-          <div class="col-12">
-            　
-          </div>
-        </div>  
-        <%= render 'reviews/form(new)', review: @review, mountain: @mountain %>
-      </div>
+          <div class="col"><%= f.date_field :start, class: "form-control form-control-lg" %></div>
+          <div class="col"><%= f.time_field :start, class: "form-control form-control-lg" %></div>
+        </div>
+          
+        <div class="mt-5 h3">終了日時</div>
+        <div class="row">
+          <div class="col"><%= f.date_field :end, class: "form-control form-control-lg" %></div>
+          <div class="col"><%= f.time_field :end, class: "form-control form-control-lg" %></div>
+        </div>
+    
+        <div class="mt-5 h3">満足度</div>
+        <div class="row">
+          <div class="col"><%= f.select :score, [["1 - もう登らなくてもいい", 1.0], ["2 - どちらとも言えない", 2.0], ["3 - 機会があればまた登りたい", 3.0], ["4 - また登りたい", 4.0], ["5 - 絶対また登りたい", 5.0]], {include_blank: "選択して下さい"}, class: "form-control form-control-lg" %></div>
+        </div>
+    
+        <div class="mt-5 h3">難易度(Lv.1～Lv.100)</div>
+        <div class="row">
+          <div class="col"><%= f.number_field :level, class: "form-control form-control-lg", in: 0.0..100.0, step: 1 %></div>
+        </div>
+    
+        <div class="mt-5 h3">タイトル</div>
+        <div class="row">
+          <div class="col"><%= f.text_field :title, class: "form-control form-control-lg" %></div>
+        </div>
+    
+        <div class="mt-5 h3">本文</div>
+        <div class="row">
+          <div class="col"><%= f.text_area :content, class: "form-control form-control-lg", rows: 20 %></div>
+        </div>
+    
+        <div class="mt-5 h3">写真</div>
+        <div class="row">
+          <div class="col"><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "form-control form-control-lg" %></div>
+        </div>
+        
+        <div class="mt-5 h3"><%= f.submit "投稿を保存する", class: "mt-5 h3 btn btn-primary" %></div>
+        
+      <% end %>
     </div>
   </div>
 </div>
