@@ -31,7 +31,7 @@ class ReviewsController < ApplicationController
   def edit #/reviews/:id/edit(.:format)
     @review = Review.find(params[:id])
     if @review.user != current_user
-      redirect_to reviews_path, alert: '不正なアクセスです。'
+      redirect_to root_path, alert: '不正なアクセスです。'
     end
   end
 
@@ -46,8 +46,12 @@ class ReviewsController < ApplicationController
 
   def destroy #/reviews/:id(.:format)
     @review = Review.find(params[:id])
-    @review.destroy
-    redirect_back(fallback_location: root_path)
+    if @review.user != current_user
+      redirect_to root_path, alert: '不正なアクセスです。'
+    else
+      @review.destroy
+      redirect_back(fallback_location: root_path)
+    end
   end
   
 

@@ -9,7 +9,10 @@
   <div class="number_rating"><%= @review.score %>点</div>
   <div class="card-text">所要時間：<%= ((@review.end - @review.start) / 3600).round(0) %> 時間 <%= (((@review.end - @review.start) % 3600) / 60).round(0) %>分</h5>
   <div class="card-text">登った日：<%= @review.start.strftime('%Y-%m-%d') %></div>
+  <div class="card-text">投稿者：<%= @review.user.name%></div>
   <div class="card-text"><small class="text-muted">更新日:<%= @review.updated_at.strftime('%Y-%m-%d') %></small></div>
-  <div class="card-text"><%= link_to "編集", edit_review_path(@review) %></div>
-  <div class="card-text"><%= button_to "削除", review_path(@review), method: :delete %></div>
+  <% if @review.user == current_user %>
+    <div class="card-text"><%= link_to "編集", edit_review_path(@review) %></div>
+    <div class="card-text"><%= button_to "削除", review_path(@review), method: :delete %></div>
+  <% end %>
 </div>
